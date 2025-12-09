@@ -1,3 +1,4 @@
-# Comment line immediately above ownership line is reserved for related gus information. Please be careful while editing.
-#GUSINFO:E360 Mobile App Messaging SDK,E360 Mobile App Messaging SDK
-*
+#ECCN:opensource,Open Source
+
+#GUSINFO:MC Mobile SDK,MobilePush SDK - General
+* @salesforce-marketingcloud/MobilePushSdk
