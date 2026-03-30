@@ -1,0 +1,11 @@
+framework module AppGroupSDK {
+  umbrella header "AppGroupSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module AppGroupSDK.Swift {
+  header "AppGroupSDK-Swift.h"
+  requires objc
+}

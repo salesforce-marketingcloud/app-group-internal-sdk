@@ -1,0 +1,433 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name AppGroupSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
+@_exported import AppGroupSDK
+import Foundation
+import Swift
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc public enum FeatureFlagStatus : Swift.Int, Swift.Codable {
+  case disabled = 0
+  case enabled = 1
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(SFMCDeliveryReceiptConfig) final public class DeliveryReceiptConfig : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let featureFlag: AppGroupSDK.FeatureFlagStatus
+  @objc public init(featureFlag: Swift.Int)
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc(SFMCFeatureConfigDetail) final public class FeatureConfigDetail : ObjectiveC.NSObject {
+  @objc final public let deliveryReceiptConfig: AppGroupSDK.DeliveryReceiptConfig
+  @objc public init(deliveryReceiptConfig: AppGroupSDK.DeliveryReceiptConfig)
+  public static func dataStoreFileName() -> Swift.String
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc(SFMCAppIdProviding) public protocol AppIdProviding {
+  @objc func storeAppId(_ appId: Swift.String, forModule module: AppGroupSDK.ExtensionModuleName) -> AppGroupSDK.DataStoreStatus
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc func appId(forModule module: AppGroupSDK.ExtensionModuleName) -> Swift.String?
+  #endif
+}
+@_inheritsConvenienceInitializers @objc(SFMCAppIdProvider) final public class AppIdProvider : ObjectiveC.NSObject, AppGroupSDK.AppIdProviding {
+  @objc override dynamic public init()
+  public init(store: AppGroupSDK.ModuleAppMappingStore = ModuleAppMappingStore())
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func appId(forModule module: AppGroupSDK.ExtensionModuleName) -> Swift.String?
+  #endif
+  @objc final public func storeAppId(_ appId: Swift.String, forModule module: AppGroupSDK.ExtensionModuleName) -> AppGroupSDK.DataStoreStatus
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SFMCCarouselClickModelFetchResult) final public class CarouselClickModelFetchResult : ObjectiveC.NSObject {
+  @objc final public let status: AppGroupSDK.DataStoreStatus
+  @objc final public let value: AppGroupSDK.CarouselClickModel?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SFMCCarouselClickModelStore) final public class CarouselClickModelStore : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension AppGroupSDK.CarouselClickModelStore {
+  @objc final public func fetchModelData() -> AppGroupSDK.CarouselClickModelFetchResult
+  @objc final public func saveModelData(_ model: AppGroupSDK.CarouselClickModel) -> AppGroupSDK.DataStoreStatus
+}
+extension AppGroupSDK.CarouselClickModelStore {
+  @objc convenience dynamic public init(module: AppGroupSDK.ExtensionModuleName, appId: Swift.String)
+  @objc final public func fetchModuleScopedModelData() -> AppGroupSDK.CarouselClickModelFetchResult
+  @objc final public func saveModuleScopedModelData(_ model: AppGroupSDK.CarouselClickModel) -> AppGroupSDK.DataStoreStatus
+}
+@_hasMissingDesignatedInitializers @objc(SFMCDeliveryReceiptsModelFetchResult) final public class DeliveryReceiptsModelFetchResult : ObjectiveC.NSObject {
+  @objc final public let status: AppGroupSDK.DataStoreStatus
+  @objc final public let value: AppGroupSDK.DeliveryReceiptsModel?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SFMCDeliveryReceiptsModelStore) final public class DeliveryReceiptsModelStore : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension AppGroupSDK.DeliveryReceiptsModelStore {
+  @objc final public func fetchModelData() -> AppGroupSDK.DeliveryReceiptsModelFetchResult
+  @objc final public func saveModelData(_ model: AppGroupSDK.DeliveryReceiptsModel) -> AppGroupSDK.DataStoreStatus
+}
+extension AppGroupSDK.DeliveryReceiptsModelStore {
+  @objc convenience dynamic public init(module: AppGroupSDK.ExtensionModuleName, appId: Swift.String)
+  @objc final public func fetchModuleScopedModelData() -> AppGroupSDK.DeliveryReceiptsModelFetchResult
+  @objc final public func saveModuleScopedModelData(_ model: AppGroupSDK.DeliveryReceiptsModel) -> AppGroupSDK.DataStoreStatus
+}
+extension Swift.Dictionary {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var jsonString: Swift.String? {
+    get
+  }
+  #endif
+}
+@_hasMissingDesignatedInitializers @objc(SFMCFeatureConfigDetailFetchResult) final public class FeatureConfigDetailFetchResult : ObjectiveC.NSObject {
+  @objc final public let status: AppGroupSDK.DataStoreStatus
+  @objc final public let value: AppGroupSDK.FeatureConfigDetail?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SFMCFeatureConfigDetailStore) final public class FeatureConfigDetailStore : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension AppGroupSDK.FeatureConfigDetailStore {
+  @objc final public func fetchModelData() -> AppGroupSDK.FeatureConfigDetailFetchResult
+  @objc final public func saveModelData(_ model: AppGroupSDK.FeatureConfigDetail) -> AppGroupSDK.DataStoreStatus
+}
+extension AppGroupSDK.FeatureConfigDetailStore {
+  @objc convenience dynamic public init(module: AppGroupSDK.ExtensionModuleName, appId: Swift.String)
+  @objc final public func fetchModuleScopedModelData() -> AppGroupSDK.FeatureConfigDetailFetchResult
+  @objc final public func saveModuleScopedModelData(_ model: AppGroupSDK.FeatureConfigDetail) -> AppGroupSDK.DataStoreStatus
+}
+@objc(SFMCRichFeatureActionType) public enum RichFeatureActionType : Swift.Int {
+  case none = 0
+  case carouselBodyClick = 1
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(SFMCCarouselRichFeatureMeta) public class CarouselRichFeatureMetaData : ObjectiveC.NSObject {
+  @objc public var actionType: AppGroupSDK.CarouselActionType
+  @objc public var richFeatureActionType: AppGroupSDK.RichFeatureActionType
+  @objc public var url: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(actionType: AppGroupSDK.CarouselActionType, richFeatureActionType: AppGroupSDK.RichFeatureActionType, url: Swift.String?)
+  #endif
+  @objc deinit
+}
+@objc(SFMCRichFeatureMetaProviding) public protocol RichFeatureMetaProviding {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc func getRichFeaturesMetaDataFrom(info: [Swift.AnyHashable : Any]) -> AppGroupSDK.CarouselRichFeatureMetaData?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc func getCarouselClickModel() -> AppGroupSDK.CarouselClickModel?
+  #endif
+}
+@objc(SFMCCarouselRichFeatureMetaProvider) final public class CarouselRichFeatureMetaProvider : ObjectiveC.NSObject, AppGroupSDK.RichFeatureMetaProviding {
+  @objc public init(module: AppGroupSDK.ExtensionModuleName, appId: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getRichFeaturesMetaDataFrom(info: [Swift.AnyHashable : Any]) -> AppGroupSDK.CarouselRichFeatureMetaData?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getCarouselClickModel() -> AppGroupSDK.CarouselClickModel?
+  #endif
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SFMCAppDeviceInfoFetchResult) final public class AppDeviceInfoFetchResult : ObjectiveC.NSObject {
+  @objc final public let status: AppGroupSDK.DataStoreStatus
+  @objc final public let value: AppGroupSDK.AppDeviceInfo?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SFMCAppDeviceInfoStore) final public class AppDeviceInfoStore : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension AppGroupSDK.AppDeviceInfoStore {
+  @objc final public func fetchModelData() -> AppGroupSDK.AppDeviceInfoFetchResult
+  @objc final public func saveModelData(_ model: AppGroupSDK.AppDeviceInfo) -> AppGroupSDK.DataStoreStatus
+}
+extension AppGroupSDK.AppDeviceInfoStore {
+  @objc convenience dynamic public init(module: AppGroupSDK.ExtensionModuleName, appId: Swift.String)
+  @objc final public func fetchModuleScopedModelData() -> AppGroupSDK.AppDeviceInfoFetchResult
+  @objc final public func saveModuleScopedModelData(_ model: AppGroupSDK.AppDeviceInfo) -> AppGroupSDK.DataStoreStatus
+}
+@objc(SFMCAppDeviceInfo) final public class AppDeviceInfo : ObjectiveC.NSObject {
+  @objc final public let baseUrl: Swift.String
+  @objc final public let applicationId: Swift.String
+  @objc final public let deviceId: Swift.String
+  @objc final public var accessToken: Swift.String
+  @objc final public let mcsdkVersion: Swift.String
+  @objc final public let subscriberToken: Swift.String?
+  @objc final public let tenantId: Swift.String?
+  @objc final public let sessionId: Swift.String?
+  @objc final public let userId: Swift.String?
+  @objc final public let appVersion: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(baseUrl: Swift.String, applicationId: Swift.String, deviceId: Swift.String, accessToken: Swift.String, mcsdkVersion: Swift.String, subscriberToken: Swift.String? = nil, tenantId: Swift.String? = nil, sessionId: Swift.String? = nil, userId: Swift.String? = nil, appVersion: Swift.String? = nil)
+  #endif
+  public static func dataStoreFileName() -> Swift.String
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc public enum PNStatus : Swift.Int, Swift.Codable {
+  case pending = 0
+  case failed = 1
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(SFMCDeliveryReceiptsModel) final public class DeliveryReceiptsModel : ObjectiveC.NSObject {
+  @objc final public var pnData: [AppGroupSDK.DeliveryReceiptPNModel]
+  @objc public init(pnData: [AppGroupSDK.DeliveryReceiptPNModel])
+  public static func dataStoreFileName() -> Swift.String
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc(SFMCDeliveryReceiptPNModel) final public class DeliveryReceiptPNModel : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let uuid: Swift.String
+  @objc final public let messageId: Swift.String
+  @objc final public let requestId: Swift.String?
+  @objc final public let messageType: Swift.String
+  @objc final public let eventDateUtc: Foundation.TimeInterval
+  @objc final public var propertyBag: Swift.String?
+  @objc final public var status: AppGroupSDK.PNStatus
+  @objc final public var userId: Swift.String?
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(uuid: Swift.String = UUID().uuidString, messageId: Swift.String, requestId: Swift.String?, messageType: Swift.String, eventDateUtc: Foundation.TimeInterval, propertyBag: Swift.String? = nil, status: AppGroupSDK.PNStatus, userId: Swift.String? = nil)
+  #endif
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension AppGroupSDK.DeliveryReceiptPNModel : Swift.Comparable {
+  public static func < (lhs: AppGroupSDK.DeliveryReceiptPNModel, rhs: AppGroupSDK.DeliveryReceiptPNModel) -> Swift.Bool
+}
+extension AppGroupSDK.DeliveryReceiptPNModel {
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers final public class CarouselRichFeatureMetaUtils {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func getUniqueNotificationId(from userInfo: [Swift.AnyHashable : Any]) -> Swift.String?
+  #endif
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SFMCModuleAppMappingFetchResult) final public class ModuleAppMappingFetchResult : ObjectiveC.NSObject {
+  @objc final public let status: AppGroupSDK.DataStoreStatus
+  @objc final public let value: AppGroupSDK.ModuleAppMappings?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SFMCModuleAppMappingStore) final public class ModuleAppMappingStore : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension AppGroupSDK.ModuleAppMappingStore {
+  @objc final public func fetchModelData() -> AppGroupSDK.ModuleAppMappingFetchResult
+  @objc final public func saveModelData(_ model: AppGroupSDK.ModuleAppMappings) -> AppGroupSDK.DataStoreStatus
+  @objc final public func saveModuleAppMapping(_ model: AppGroupSDK.ModuleAppMapping) -> AppGroupSDK.DataStoreStatus
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class PNContextUtils : ObjectiveC.NSObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func extractContextField(fromContent content: UserNotifications.UNNotificationContent) -> Swift.String?
+  #endif
+  @objc public static func parseContextInfo(fromContextString contextString: Swift.String) -> AppGroupSDK.PNContextInfo
+  @objc public static func parseContextInfo(fromContent content: UserNotifications.UNNotificationContent) -> AppGroupSDK.PNContextInfo
+  @objc public static func parseContextInfo(fromUserInfo userInfo: [Swift.AnyHashable : Any]) -> AppGroupSDK.PNContextInfo
+  @objc deinit
+}
+@objc public class PNContextInfo : ObjectiveC.NSObject {
+  @objc final public let source: AppGroupSDK.PNContextSource
+  @objc final public let destinationsArray: [Foundation.NSNumber]
+  @objc final public let businessUnitId: Swift.String?
+  public func destinations() -> [AppGroupSDK.PNContextDestination]
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(source: AppGroupSDK.PNContextSource, destinationsArray: [Foundation.NSNumber], businessUnitId: Swift.String?)
+  #endif
+  @objc public func isInavlidOrAbsentContext() -> Swift.Bool
+  @objc deinit
+}
+@objc public enum PNContextSource : Swift.Int, Swift.CaseIterable {
+  case none = 0
+  case mce = 1
+  case mam = 2
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias AllCases = [AppGroupSDK.PNContextSource]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [AppGroupSDK.PNContextSource] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum PNContextDestination : Swift.Int, Swift.CaseIterable {
+  case none = 0
+  case mce = 1
+  case mam = 2
+  case dataCloud = 4
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias AllCases = [AppGroupSDK.PNContextDestination]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [AppGroupSDK.PNContextDestination] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(SFMCModuleAppMapping) final public class ModuleAppMapping : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let moduleName: Swift.String
+  @objc final public let appId: Swift.String
+  @objc public init(moduleName: AppGroupSDK.ExtensionModuleName, appId: Swift.String)
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension AppGroupSDK.ModuleAppMapping {
+  public static func == (lhs: AppGroupSDK.ModuleAppMapping, rhs: AppGroupSDK.ModuleAppMapping) -> Swift.Bool
+}
+@objc(SFMCModuleAppMappings) final public class ModuleAppMappings : ObjectiveC.NSObject {
+  @objc final public let mappings: [AppGroupSDK.ModuleAppMapping]
+  @objc public init(mappings: [AppGroupSDK.ModuleAppMapping])
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func fetchAppId(forModule module: AppGroupSDK.ExtensionModuleName) -> Swift.String?
+  #endif
+  public static func dataStoreFileName() -> Swift.String
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc(SFExtensionModuleName) public enum ExtensionModuleName : Swift.Int, Swift.CaseIterable {
+  case marketingEngagement = 1
+  case mobileAppMessaging = 2
+  public var stringValue: Swift.String {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias AllCases = [AppGroupSDK.ExtensionModuleName]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [AppGroupSDK.ExtensionModuleName] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct PNDestinationModuleMapping {
+  public init()
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getModules(for destinations: [AppGroupSDK.PNContextDestination]) -> [AppGroupSDK.ExtensionModuleName]?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getModule(for destination: AppGroupSDK.PNContextDestination) -> AppGroupSDK.ExtensionModuleName?
+  #endif
+  public func getDestination(forModule module: AppGroupSDK.ExtensionModuleName) -> AppGroupSDK.PNContextDestination
+}
+@objc(SFMCCarouselActionType) public enum CarouselActionType : Swift.Int, Swift.Codable {
+  case openApp = 0
+  case openDeepLink = 1
+  case openWebUrl = 2
+  case openCloudPage = 3
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(SFMCCarouselClickModel) final public class CarouselClickModel : ObjectiveC.NSObject {
+  @objc final public let notificationUniqueId: Swift.String
+  @objc final public let isCarouselClick: Swift.Bool
+  @objc final public let clickIndex: Swift.Int
+  @objc final public let actionType: AppGroupSDK.CarouselActionType
+  @objc final public let actionUrl: Swift.String?
+  @objc final public let panelId: Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public init(notificationUniqueId: Swift.String, isCarouselClick: Swift.Bool, clickIndex: Swift.Int, actionType: AppGroupSDK.CarouselActionType, actionUrl: Swift.String?, panelId: Swift.String)
+  #endif
+  public static func dataStoreFileName() -> Swift.String
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc(SFMCDataStoreStatus) public enum DataStoreStatus : Swift.Int {
+  case success = 0
+  case directoryUrlNotFound = 1
+  case notFileUrl = 2
+  case jsonEncodingError = 3
+  case fileSaveError = 4
+  case fileReadError = 5
+  case jsonDecodingError = 6
+  case dataStoreUnavailable = 7
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension AppGroupSDK.FeatureFlagStatus : Swift.Equatable {}
+extension AppGroupSDK.FeatureFlagStatus : Swift.Hashable {}
+extension AppGroupSDK.FeatureFlagStatus : Swift.RawRepresentable {}
+extension AppGroupSDK.FeatureConfigDetail : Swift.Encodable {}
+extension AppGroupSDK.FeatureConfigDetail : Swift.Decodable {}
+extension AppGroupSDK.RichFeatureActionType : Swift.Equatable {}
+extension AppGroupSDK.RichFeatureActionType : Swift.Hashable {}
+extension AppGroupSDK.RichFeatureActionType : Swift.RawRepresentable {}
+extension AppGroupSDK.AppDeviceInfo : Swift.Encodable {}
+extension AppGroupSDK.AppDeviceInfo : Swift.Decodable {}
+extension AppGroupSDK.PNStatus : Swift.Equatable {}
+extension AppGroupSDK.PNStatus : Swift.Hashable {}
+extension AppGroupSDK.PNStatus : Swift.RawRepresentable {}
+extension AppGroupSDK.DeliveryReceiptsModel : Swift.Encodable {}
+extension AppGroupSDK.DeliveryReceiptsModel : Swift.Decodable {}
+extension AppGroupSDK.PNContextSource : Swift.Equatable {}
+extension AppGroupSDK.PNContextSource : Swift.Hashable {}
+extension AppGroupSDK.PNContextSource : Swift.RawRepresentable {}
+extension AppGroupSDK.PNContextDestination : Swift.Equatable {}
+extension AppGroupSDK.PNContextDestination : Swift.Hashable {}
+extension AppGroupSDK.PNContextDestination : Swift.RawRepresentable {}
+extension AppGroupSDK.ModuleAppMappings : Swift.Encodable {}
+extension AppGroupSDK.ModuleAppMappings : Swift.Decodable {}
+extension AppGroupSDK.ExtensionModuleName : Swift.Equatable {}
+extension AppGroupSDK.ExtensionModuleName : Swift.Hashable {}
+extension AppGroupSDK.ExtensionModuleName : Swift.RawRepresentable {}
+extension AppGroupSDK.CarouselActionType : Swift.Equatable {}
+extension AppGroupSDK.CarouselActionType : Swift.Hashable {}
+extension AppGroupSDK.CarouselActionType : Swift.RawRepresentable {}
+extension AppGroupSDK.CarouselClickModel : Swift.Encodable {}
+extension AppGroupSDK.CarouselClickModel : Swift.Decodable {}
+extension AppGroupSDK.DataStoreStatus : Swift.Equatable {}
+extension AppGroupSDK.DataStoreStatus : Swift.Hashable {}
+extension AppGroupSDK.DataStoreStatus : Swift.RawRepresentable {}
